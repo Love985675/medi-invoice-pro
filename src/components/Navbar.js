@@ -1,15 +1,16 @@
 import React from "react";
+import logo from "./img/MediInvoicePro.png";
 
 function Navbar() {
   return (
     <nav className="navbar">
       <div className="logo">
-        <h1>Medi Invoice Pro</h1>
+        <img src={logo} alt="Logo" />
       </div>
       <ul className="nav-links">
-        {/* <li>
+        <li>
           <a href="./src/App.js">Home</a>
-        </li> */}
+        </li>
         <li>
           <a href="#">About Us</a>
         </li>
