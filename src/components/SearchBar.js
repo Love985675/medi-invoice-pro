@@ -1,11 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import medicineData from "../data/medicineData";
+import BillTable from "./BillTable";
 
 function SearchBar() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [medicineList, setMedicineList] = useState([]); // Array to store available medicines
-  const [bill, setBill] = useState([]); // Array to store selected medicines for the bill
+  const [searchTerm, setSearchTerm] = useState("");
+  const [medicineList, setMedicineList] = useState([]);
+  const [bill, setBill] = useState([]);
 
-  // Implement your search and add to bill logic here
+  const handleSearch = (query) => {
+    const filteredMedicines = medicineData.filter((medicine) =>
+      medicine.name.toLowerCase().includes(query.toLowerCase())
+    );
+    setMedicineList(filteredMedicines);
+  };
+
+  const addToBill = (selectedMedicine) => {
+    setBill((prevBill) => [...prevBill, { ...selectedMedicine, quantity: 1 }]);
+  };
+
+  const handleSelectMedicine = (selectedMedicine) => {
+    addToBill(selectedMedicine);
+    setMedicineList([]);
+    setSearchTerm("");
+  };
+
+  const updateQuantity = (id, quantity) => {
+    setBill((prevBill) =>
+      prevBill.map((item) => (item.id === id ? { ...item, quantity } : item))
+    );
+  };
+
+  const removeFromBill = (id) => {
+    setBill((prevBill) => prevBill.filter((item) => item.id !== id));
+  };
+
+  const handleSearchTermChange = (e) => {
+    const newSearchTerm = e.target.value;
+    setSearchTerm(newSearchTerm);
+    handleSearch(newSearchTerm);
+  };
 
   return (
     <section className="search-bar">
@@ -13,14 +46,22 @@ function SearchBar() {
         type="text"
         placeholder="Search for medicines..."
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={handleSearchTermChange}
       />
-      {/* Add a list of medicines with add to bill functionality */}
       <div className="medicine-list">
-        {/* Medicine list items go here */}
+        {medicineList.map((medicine) => (
+          <div key={medicine.id} onClick={() => handleSelectMedicine(medicine)}>
+            {medicine.name} - ${medicine.price}
+          </div>
+        ))}
       </div>
       <div className="bill">
-        {/* Bill table goes here */}
+        <h2>Bill Summary</h2>
+        <BillTable
+          bill={bill}
+          updateQuantity={updateQuantity}
+          removeFromBill={removeFromBill}
+        />
       </div>
     </section>
   );

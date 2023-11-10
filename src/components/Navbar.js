@@ -7,9 +7,9 @@ function Navbar() {
         <h1>Medi Invoice Pro</h1>
       </div>
       <ul className="nav-links">
-        <li>
-          <a href="#">Home</a>
-        </li>
+        {/* <li>
+          <a href="./src/App.js">Home</a>
+        </li> */}
         <li>
           <a href="#">About Us</a>
         </li>
