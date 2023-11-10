@@ -51,7 +51,7 @@ function SearchBar() {
       <div className="medicine-list">
         {medicineList.map((medicine) => (
           <div key={medicine.id} onClick={() => handleSelectMedicine(medicine)}>
-            {medicine.name} - ${medicine.price}
+            {medicine.name} - ₹{medicine.price}
           </div>
         ))}
       </div>

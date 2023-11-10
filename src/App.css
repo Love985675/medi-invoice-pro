@@ -75,8 +75,8 @@ input[type="text"] {
 
 
 .medicine-list {
-  max-height: 200px; /* Set a maximum height for the suggestion list */
-  overflow-y: auto; /* Enable vertical scrolling if the list exceeds the maximum height */
+  max-height: 200px; 
+  overflow-y: auto; 
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -94,11 +94,10 @@ input[type="text"] {
   background-color: #f0f0f0;
 }
 
-/* Add more styling as needed */
 
 
 .bill {
-  /* Style your bill table */
+  
 }
 
 /* BillTable styles */
@@ -116,7 +115,6 @@ input[type="text"] {
   margin-bottom: 20px;
 }
 
-/* Add this CSS to your stylesheet or component */
 
 .bill-table button {
   background-color: #052734; /* Coral color for the Remove button */
@@ -130,6 +128,22 @@ input[type="text"] {
 
 .bill-table button:hover {
   background-color: #34a0a4; /* Darker shade on hover */
+}
+
+.bill-table .print-button {
+  
+  background-color: #34a0a4; 
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.bill-table .print-button:hover {
+  background-color: rgb(14, 82, 103); 
 }
 
 
